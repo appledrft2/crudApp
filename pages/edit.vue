@@ -68,7 +68,7 @@ export default {
       console.log(article_list[this.id]);
 
       article_list[this.id].title = this.title;
-      article_list[this.id].content = this.title;
+      article_list[this.id].content = this.content;
       article_list[this.id].date = new Date();
 
       localStorage.setItem("article_list", JSON.stringify(article_list));
