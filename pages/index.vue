@@ -20,7 +20,7 @@
             <NuxtLink class="btn btn-success" :to="`/edit/${key}`"
               >Edit</NuxtLink
             >
-            <button class="btn btn-danger" @click="deleteArticle(key )">
+            <button class="btn btn-danger" @click="deleteArticle(key)">
               Delete
             </button>
           </td>
@@ -44,14 +44,20 @@ export default {
   },
   methods: {
     getArticleList() {
-      let list = localStorage.getItem("article_list") || [];
-      this.article_list = JSON.parse(list);
+      let list = localStorage.getItem("article_list");
+
+      if (list) {
+        list = JSON.parse(list);
+      } else {
+        list = [];
+      }
+
+      this.article_list = list;
     },
     deleteArticle(key) {
- 
-     this.article_list.splice(key, 1);
-  
-        localStorage.setItem("article_list", JSON.stringify(this.article_list));
+      this.article_list.splice(key, 1);
+
+      localStorage.setItem("article_list", JSON.stringify(this.article_list));
     },
   },
 };
